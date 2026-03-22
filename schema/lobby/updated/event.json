@@ -28,6 +28,21 @@
                         { "type": "null" }
                     ]
                 },
+                "tags": {
+                    "anyOf": [
+                        {
+                            "description": "Tags for filtering and categorizing",
+                            "type": "array",
+                            "items": {
+                                "description": "Lobby tag",
+                                "type": "string",
+                                "maxLength": 30
+                            },
+                            "maxItems": 10
+                        },
+                        { "type": "null" }
+                    ]
+                },
                 "mapName": { "type": "string" },
                 "engineVersion": { "type": "string" },
                 "gameVersion": { "type": "string" },

@@ -25,6 +25,16 @@
                     "type": "string",
                     "maxLength": 500
                 },
+                "tags": {
+                    "description": "Replace existing tags with new set",
+                    "type": "array",
+                    "items": {
+                        "description": "Lobby tag",
+                        "type": "string",
+                        "maxLength": 30
+                    },
+                    "maxItems": 10
+                },
                 "mapName": { "type": "string" },
                 "allyTeamConfig": {
                     "$ref": "../../definitions/allyTeamConfig.json"

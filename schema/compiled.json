@@ -3494,6 +3494,16 @@
                             "type": "string",
                             "maxLength": 500
                         },
+                        "tags": {
+                            "description": "Tags for filtering and categorizing lobbies",
+                            "type": "array",
+                            "items": {
+                                "description": "Lobby tag (e.g., 'beginner-friendly', 'competitive')",
+                                "type": "string",
+                                "maxLength": 30
+                            },
+                            "maxItems": 10
+                        },
                         "mapName": { "type": "string" },
                         "allyTeamConfig": {
                             "$ref": "#/definitions/allyTeamConfig"
@@ -3983,6 +3993,16 @@
                                                 "description": {
                                                     "type": "string"
                                                 },
+                                                "tags": {
+                                                    "description": "Tags for filtering",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "Lobby tag",
+                                                        "type": "string",
+                                                        "maxLength": 30
+                                                    },
+                                                    "maxItems": 10
+                                                },
                                                 "playerCount": {
                                                     "type": "integer"
                                                 },
@@ -4370,6 +4390,16 @@
                             "type": "string",
                             "maxLength": 500
                         },
+                        "tags": {
+                            "description": "Replace existing tags with new set",
+                            "type": "array",
+                            "items": {
+                                "description": "Lobby tag",
+                                "type": "string",
+                                "maxLength": 30
+                            },
+                            "maxItems": 10
+                        },
                         "mapName": { "type": "string" },
                         "allyTeamConfig": {
                             "$ref": "#/definitions/allyTeamConfig"
@@ -4619,6 +4649,21 @@
                                     "description": "Lobby description, rules, or requirements",
                                     "type": "string",
                                     "maxLength": 500
+                                },
+                                { "type": "null" }
+                            ]
+                        },
+                        "tags": {
+                            "anyOf": [
+                                {
+                                    "description": "Tags for filtering and categorizing",
+                                    "type": "array",
+                                    "items": {
+                                        "description": "Lobby tag",
+                                        "type": "string",
+                                        "maxLength": 30
+                                    },
+                                    "maxItems": 10
                                 },
                                 { "type": "null" }
                             ]

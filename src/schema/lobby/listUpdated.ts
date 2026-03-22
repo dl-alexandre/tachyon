@@ -16,6 +16,18 @@ export default defineEndpoint({
                         id: Type.String(),
                         name: Type.Optional(Type.String()),
                         description: Type.Optional(Type.String()),
+                        tags: Type.Optional(
+                            Type.Array(
+                                Type.String({
+                                    maxLength: 30,
+                                    description: "Lobby tag",
+                                }),
+                                {
+                                    maxItems: 10,
+                                    description: "Tags for filtering",
+                                }
+                            )
+                        ),
                         playerCount: Type.Optional(Type.Integer()),
                         maxPlayerCount: Type.Optional(Type.Integer()),
                         mapName: Type.Optional(Type.String()),

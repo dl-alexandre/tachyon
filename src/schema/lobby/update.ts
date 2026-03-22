@@ -15,6 +15,18 @@ export default defineEndpoint({
                     description: "update the lobby description",
                 })
             ),
+            tags: Type.Optional(
+                Type.Array(
+                    Type.String({
+                        maxLength: 30,
+                        description: "Lobby tag",
+                    }),
+                    {
+                        maxItems: 10,
+                        description: "Replace existing tags with new set",
+                    }
+                )
+            ),
             mapName: Type.Optional(Type.String()),
             allyTeamConfig: Type.Optional(Type.Ref("allyTeamConfig")),
         }),

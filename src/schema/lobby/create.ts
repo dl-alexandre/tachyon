@@ -15,6 +15,18 @@ export default defineEndpoint({
                     description: "Optional description of the lobby, rules, or requirements",
                 })
             ),
+            tags: Type.Optional(
+                Type.Array(
+                    Type.String({
+                        maxLength: 30,
+                        description: "Lobby tag (e.g., 'beginner-friendly', 'competitive')",
+                    }),
+                    {
+                        maxItems: 10,
+                        description: "Tags for filtering and categorizing lobbies",
+                    }
+                )
+            ),
             mapName: Type.String(),
             allyTeamConfig: Type.Ref("allyTeamConfig"),
         }),

@@ -23,6 +23,20 @@ export default defineEndpoint({
                     })
                 )
             ),
+            tags: Type.Optional(
+                Nullable(
+                    Type.Array(
+                        Type.String({
+                            maxLength: 30,
+                            description: "Lobby tag",
+                        }),
+                        {
+                            maxItems: 10,
+                            description: "Tags for filtering and categorizing",
+                        }
+                    )
+                )
+            ),
             mapName: Type.Optional(Type.String()),
             engineVersion: Type.Optional(Type.String()),
             gameVersion: Type.Optional(Type.String()),

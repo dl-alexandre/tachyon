@@ -27,6 +27,16 @@
                                         "id": { "type": "string" },
                                         "name": { "type": "string" },
                                         "description": { "type": "string" },
+                                        "tags": {
+                                            "description": "Tags for filtering",
+                                            "type": "array",
+                                            "items": {
+                                                "description": "Lobby tag",
+                                                "type": "string",
+                                                "maxLength": 30
+                                            },
+                                            "maxItems": 10
+                                        },
                                         "playerCount": { "type": "integer" },
                                         "maxPlayerCount": { "type": "integer" },
                                         "mapName": { "type": "string" },
