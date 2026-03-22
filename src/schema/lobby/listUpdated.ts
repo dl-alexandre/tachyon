@@ -15,6 +15,7 @@ export default defineEndpoint({
                     Type.Object({
                         id: Type.String(),
                         name: Type.Optional(Type.String()),
+                        description: Type.Optional(Type.String()),
                         playerCount: Type.Optional(Type.Integer()),
                         maxPlayerCount: Type.Optional(Type.Integer()),
                         mapName: Type.Optional(Type.String()),

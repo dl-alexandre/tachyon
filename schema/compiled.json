@@ -3489,6 +3489,11 @@
                     "type": "object",
                     "properties": {
                         "name": { "type": "string" },
+                        "description": {
+                            "description": "Optional description of the lobby, rules, or requirements",
+                            "type": "string",
+                            "maxLength": 500
+                        },
                         "mapName": { "type": "string" },
                         "allyTeamConfig": {
                             "$ref": "#/definitions/allyTeamConfig"
@@ -3975,6 +3980,9 @@
                                             "properties": {
                                                 "id": { "type": "string" },
                                                 "name": { "type": "string" },
+                                                "description": {
+                                                    "type": "string"
+                                                },
                                                 "playerCount": {
                                                     "type": "integer"
                                                 },
@@ -4357,6 +4365,11 @@
                             "description": "to rename the lobby",
                             "type": "string"
                         },
+                        "description": {
+                            "description": "update the lobby description",
+                            "type": "string",
+                            "maxLength": 500
+                        },
                         "mapName": { "type": "string" },
                         "allyTeamConfig": {
                             "$ref": "#/definitions/allyTeamConfig"
@@ -4600,6 +4613,16 @@
                     "properties": {
                         "id": { "type": "string" },
                         "name": { "type": "string" },
+                        "description": {
+                            "anyOf": [
+                                {
+                                    "description": "Lobby description, rules, or requirements",
+                                    "type": "string",
+                                    "maxLength": 500
+                                },
+                                { "type": "null" }
+                            ]
+                        },
                         "mapName": { "type": "string" },
                         "engineVersion": { "type": "string" },
                         "gameVersion": { "type": "string" },

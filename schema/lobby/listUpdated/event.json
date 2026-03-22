@@ -26,6 +26,7 @@
                                     "properties": {
                                         "id": { "type": "string" },
                                         "name": { "type": "string" },
+                                        "description": { "type": "string" },
                                         "playerCount": { "type": "integer" },
                                         "maxPlayerCount": { "type": "integer" },
                                         "mapName": { "type": "string" },

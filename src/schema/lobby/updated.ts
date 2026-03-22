@@ -15,6 +15,14 @@ export default defineEndpoint({
             // makes no sense to clear some propreties. For example, a map
             // must always be set.
             name: Type.Optional(Type.String()),
+            description: Type.Optional(
+                Nullable(
+                    Type.String({
+                        maxLength: 500,
+                        description: "Lobby description, rules, or requirements",
+                    })
+                )
+            ),
             mapName: Type.Optional(Type.String()),
             engineVersion: Type.Optional(Type.String()),
             gameVersion: Type.Optional(Type.String()),

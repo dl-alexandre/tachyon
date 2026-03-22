@@ -9,6 +9,12 @@ export default defineEndpoint({
     request: {
         data: Type.Object({
             name: Type.Optional(Type.String({ description: "to rename the lobby" })),
+            description: Type.Optional(
+                Type.String({
+                    maxLength: 500,
+                    description: "update the lobby description",
+                })
+            ),
             mapName: Type.Optional(Type.String()),
             allyTeamConfig: Type.Optional(Type.Ref("allyTeamConfig")),
         }),
