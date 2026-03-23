@@ -26,13 +26,10 @@ export default defineEndpoint({
             tags: Type.Optional(
                 Nullable(
                     Type.Array(
-                        Type.String({
-                            maxLength: 30,
-                            description: "Lobby tag",
-                        }),
+                        Type.Enum(["duel", "small team", "large team", "PvE"]),
                         {
-                            maxItems: 10,
-                            description: "Tags for filtering and categorizing",
+                            maxItems: 4,
+                            description: "Lobby tags for filtering",
                         }
                     )
                 )

@@ -3495,14 +3495,17 @@
                             "maxLength": 500
                         },
                         "tags": {
-                            "description": "Tags for filtering and categorizing lobbies",
+                            "description": "Lobby tags for filtering (duel, small team, large team, PvE)",
                             "type": "array",
                             "items": {
-                                "description": "Lobby tag (e.g., 'beginner-friendly', 'competitive')",
-                                "type": "string",
-                                "maxLength": 30
+                                "enum": [
+                                    "duel",
+                                    "small team",
+                                    "large team",
+                                    "PvE"
+                                ]
                             },
-                            "maxItems": 10
+                            "maxItems": 4
                         },
                         "mapName": { "type": "string" },
                         "allyTeamConfig": {
@@ -3997,11 +4000,14 @@
                                                     "description": "Tags for filtering",
                                                     "type": "array",
                                                     "items": {
-                                                        "description": "Lobby tag",
-                                                        "type": "string",
-                                                        "maxLength": 30
+                                                        "enum": [
+                                                            "duel",
+                                                            "small team",
+                                                            "large team",
+                                                            "PvE"
+                                                        ]
                                                     },
-                                                    "maxItems": 10
+                                                    "maxItems": 4
                                                 },
                                                 "playerCount": {
                                                     "type": "integer"
@@ -4394,11 +4400,14 @@
                             "description": "Replace existing tags with new set",
                             "type": "array",
                             "items": {
-                                "description": "Lobby tag",
-                                "type": "string",
-                                "maxLength": 30
+                                "enum": [
+                                    "duel",
+                                    "small team",
+                                    "large team",
+                                    "PvE"
+                                ]
                             },
-                            "maxItems": 10
+                            "maxItems": 4
                         },
                         "mapName": { "type": "string" },
                         "allyTeamConfig": {
@@ -4656,14 +4665,17 @@
                         "tags": {
                             "anyOf": [
                                 {
-                                    "description": "Tags for filtering and categorizing",
+                                    "description": "Lobby tags for filtering",
                                     "type": "array",
                                     "items": {
-                                        "description": "Lobby tag",
-                                        "type": "string",
-                                        "maxLength": 30
+                                        "enum": [
+                                            "duel",
+                                            "small team",
+                                            "large team",
+                                            "PvE"
+                                        ]
                                     },
-                                    "maxItems": 10
+                                    "maxItems": 4
                                 },
                                 { "type": "null" }
                             ]

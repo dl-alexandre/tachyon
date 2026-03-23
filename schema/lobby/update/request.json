@@ -29,11 +29,9 @@
                     "description": "Replace existing tags with new set",
                     "type": "array",
                     "items": {
-                        "description": "Lobby tag",
-                        "type": "string",
-                        "maxLength": 30
+                        "enum": ["duel", "small team", "large team", "PvE"]
                     },
-                    "maxItems": 10
+                    "maxItems": 4
                 },
                 "mapName": { "type": "string" },
                 "allyTeamConfig": {

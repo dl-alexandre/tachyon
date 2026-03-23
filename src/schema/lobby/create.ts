@@ -17,13 +17,10 @@ export default defineEndpoint({
             ),
             tags: Type.Optional(
                 Type.Array(
-                    Type.String({
-                        maxLength: 30,
-                        description: "Lobby tag (e.g., 'beginner-friendly', 'competitive')",
-                    }),
+                    Type.Enum(["duel", "small team", "large team", "PvE"]),
                     {
-                        maxItems: 10,
-                        description: "Tags for filtering and categorizing lobbies",
+                        maxItems: 4,
+                        description: "Lobby tags for filtering (duel, small team, large team, PvE)",
                     }
                 )
             ),
