@@ -18,6 +18,34 @@
             "properties": {
                 "id": { "type": "string" },
                 "name": { "type": "string" },
+                "description": {
+                    "anyOf": [
+                        {
+                            "description": "Lobby description, rules, or requirements",
+                            "type": "string",
+                            "maxLength": 500
+                        },
+                        { "type": "null" }
+                    ]
+                },
+                "tags": {
+                    "anyOf": [
+                        {
+                            "description": "Lobby tags for filtering",
+                            "type": "array",
+                            "items": {
+                                "enum": [
+                                    "duel",
+                                    "small team",
+                                    "large team",
+                                    "PvE"
+                                ]
+                            },
+                            "maxItems": 4
+                        },
+                        { "type": "null" }
+                    ]
+                },
                 "mapName": { "type": "string" },
                 "engineVersion": { "type": "string" },
                 "gameVersion": { "type": "string" },

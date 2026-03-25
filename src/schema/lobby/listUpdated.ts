@@ -15,6 +15,16 @@ export default defineEndpoint({
                     Type.Object({
                         id: Type.String(),
                         name: Type.Optional(Type.String()),
+                        description: Type.Optional(Type.String()),
+                        tags: Type.Optional(
+                            Type.Array(
+                                Type.Enum(["duel", "small team", "large team", "PvE"]),
+                                {
+                                    maxItems: 4,
+                                    description: "Tags for filtering",
+                                }
+                            )
+                        ),
                         playerCount: Type.Optional(Type.Integer()),
                         maxPlayerCount: Type.Optional(Type.Integer()),
                         mapName: Type.Optional(Type.String()),

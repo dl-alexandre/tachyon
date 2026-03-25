@@ -375,6 +375,19 @@ Create a lobby
             "type": "object",
             "properties": {
                 "name": { "type": "string" },
+                "description": {
+                    "description": "Optional description of the lobby, rules, or requirements",
+                    "type": "string",
+                    "maxLength": 500
+                },
+                "tags": {
+                    "description": "Lobby tags for filtering (duel, small team, large team, PvE)",
+                    "type": "array",
+                    "items": {
+                        "enum": ["duel", "small team", "large team", "PvE"]
+                    },
+                    "maxItems": 4
+                },
                 "mapName": { "type": "string" },
                 "allyTeamConfig": { "$ref": "#/definitions/allyTeamConfig" }
             },
@@ -396,45 +409,30 @@ Create a lobby
     "messageId": "exercitation",
     "commandId": "lobby/create",
     "data": {
-        "name": "laboris Duis",
-        "mapName": "pariatur sint sed",
+        "name": "est dolore Ut",
+        "description": "ut aute",
+        "tags": [],
+        "mapName": "pariatur consectetur amet",
         "allyTeamConfig": [
             {
-                "maxTeams": 10584546,
+                "maxTeams": 64939511,
                 "startBox": {
-                    "top": 0.2692078948020935,
-                    "bottom": 0.5980529189109802,
-                    "left": 0.83367520570755,
-                    "right": 0.38755643367767334
-                },
-                "teams": []
-            },
-            {
-                "maxTeams": 45991004,
-                "startBox": {
-                    "top": 0.47580695152282715,
-                    "bottom": 0.7716678380966187,
-                    "left": 0.9239792227745056,
-                    "right": 0.6328656673431396
+                    "top": 0.7831190228462219,
+                    "bottom": 0.8578554391860962,
+                    "left": 0.7882577180862427,
+                    "right": 0.07262331247329712
                 },
                 "teams": [
                     {
-                        "maxPlayers": 94429130
+                        "maxPlayers": 25974715
                     },
                     {
-                        "maxPlayers": 43390680
+                        "maxPlayers": 88151050
+                    },
+                    {
+                        "maxPlayers": 76241529
                     }
                 ]
-            },
-            {
-                "maxTeams": 67363990,
-                "startBox": {
-                    "top": 0.832726240158081,
-                    "bottom": 0.8541895151138306,
-                    "left": 0.6024702787399292,
-                    "right": 0.414419949054718
-                },
-                "teams": []
             }
         ]
     }
@@ -460,6 +458,22 @@ export interface LobbyCreateRequest {
 }
 export interface LobbyCreateRequestData {
     name: string;
+    description?: string;
+    tags?:
+        | []
+        | ["duel" | "small team" | "large team" | "PvE"]
+        | ["duel" | "small team" | "large team" | "PvE", "duel" | "small team" | "large team" | "PvE"]
+        | [
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE"
+          ]
+        | [
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE"
+          ];
     mapName: string;
     allyTeamConfig: AllyTeamConfig;
 }
@@ -1868,13 +1882,18 @@ Sent by the server to give the client the full list of all lobbies
     "data": {
         "lobbies": {
             "JH+": {
-                "id": "nulla eiusmod",
-                "name": "ad ullamco sunt ipsum proident",
-                "playerCount": 26791585,
-                "maxPlayerCount": -87375796,
-                "mapName": "amet proident non elit",
-                "engineVersion": "in nostrud",
-                "gameVersion": "ullamco esse cillum enim",
+                "id": "ad dolore sit sint tempor",
+                "name": "aute esse pariatur fugiat",
+                "description": "nostrud proident minim adipisicing",
+                "tags": [
+                    "PvE",
+                    "duel"
+                ],
+                "playerCount": 86861897,
+                "maxPlayerCount": 94461,
+                "mapName": "laborum aliqua ad non",
+                "engineVersion": "aute",
+                "gameVersion": "deserunt do",
                 "currentBattle": null
             }
         }
@@ -1901,6 +1920,22 @@ export interface LobbyListResetEventData {
 export interface LobbyOverview {
     id: string;
     name: string;
+    description?: string;
+    tags?:
+        | []
+        | ["duel" | "small team" | "large team" | "PvE"]
+        | ["duel" | "small team" | "large team" | "PvE", "duel" | "small team" | "large team" | "PvE"]
+        | [
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE"
+          ]
+        | [
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE"
+          ];
     playerCount: number;
     maxPlayerCount: number;
     mapName: string;
@@ -1954,6 +1989,20 @@ Sent by the server whenever some lobbies are added, removed or modified.
                                     "properties": {
                                         "id": { "type": "string" },
                                         "name": { "type": "string" },
+                                        "description": { "type": "string" },
+                                        "tags": {
+                                            "description": "Tags for filtering",
+                                            "type": "array",
+                                            "items": {
+                                                "enum": [
+                                                    "duel",
+                                                    "small team",
+                                                    "large team",
+                                                    "PvE"
+                                                ]
+                                            },
+                                            "maxItems": 4
+                                        },
                                         "playerCount": { "type": "integer" },
                                         "maxPlayerCount": { "type": "integer" },
                                         "mapName": { "type": "string" },
@@ -2002,18 +2051,11 @@ Sent by the server whenever some lobbies are added, removed or modified.
     "data": {
         "lobbies": {
             "^-S:": {
-                "id": "incididunt consectetur dolor",
-                "name": "ex sed anim",
-                "playerCount": 7251906,
-                "maxPlayerCount": -89825213,
-                "mapName": "id pariatur tempor ullamco",
-                "engineVersion": "magna",
+                "id": "cillum est cupidatat",
+                "engineVersion": "magna anim fugiat reprehenderit quis",
                 "currentBattle": null
             },
-            "N <": {
-                "id": "proident quis",
-                "gameVersion": "adipisicing ipsum aute officia"
-            }
+            "N <": null
         }
     }
 }
@@ -2035,6 +2077,22 @@ export interface LobbyListUpdatedEventData {
         [k: string]: {
             id: string;
             name?: string;
+            description?: string;
+            tags?:
+                | []
+                | ["duel" | "small team" | "large team" | "PvE"]
+                | ["duel" | "small team" | "large team" | "PvE", "duel" | "small team" | "large team" | "PvE"]
+                | [
+                      "duel" | "small team" | "large team" | "PvE",
+                      "duel" | "small team" | "large team" | "PvE",
+                      "duel" | "small team" | "large team" | "PvE"
+                  ]
+                | [
+                      "duel" | "small team" | "large team" | "PvE",
+                      "duel" | "small team" | "large team" | "PvE",
+                      "duel" | "small team" | "large team" | "PvE",
+                      "duel" | "small team" | "large team" | "PvE"
+                  ];
             playerCount?: number;
             maxPlayerCount?: number;
             mapName?: string;
@@ -2755,6 +2813,19 @@ Update some properties of the lobby the player is in.
                     "description": "to rename the lobby",
                     "type": "string"
                 },
+                "description": {
+                    "description": "update the lobby description",
+                    "type": "string",
+                    "maxLength": 500
+                },
+                "tags": {
+                    "description": "Replace existing tags with new set",
+                    "type": "array",
+                    "items": {
+                        "enum": ["duel", "small team", "large team", "PvE"]
+                    },
+                    "maxItems": 4
+                },
                 "mapName": { "type": "string" },
                 "allyTeamConfig": { "$ref": "#/definitions/allyTeamConfig" }
             }
@@ -2775,51 +2846,39 @@ Update some properties of the lobby the player is in.
     "messageId": "ad cillum sed cupidatat",
     "commandId": "lobby/update",
     "data": {
-        "in70a": true,
-        "name": "minim magna eu mollit adipisicing",
+        "in9": true,
+        "name": "incididunt nulla quis minim sint",
+        "description": "sint Ut",
+        "tags": [],
+        "mapName": "sint sed Ut",
         "allyTeamConfig": [
             {
-                "maxTeams": 60585350,
+                "maxTeams": 54964585,
                 "startBox": {
-                    "top": 0.09639787673950195,
-                    "bottom": 0.5077924132347107,
-                    "left": 0.6672755479812622,
-                    "right": 0.24469232559204102
+                    "top": 0.737677812576294,
+                    "bottom": 0.5743683576583862,
+                    "left": 0.2666088938713074,
+                    "right": 0.09827446937561035
+                },
+                "teams": []
+            },
+            {
+                "maxTeams": 560302,
+                "startBox": {
+                    "top": 0.16833186149597168,
+                    "bottom": 0.8774142265319824,
+                    "left": 0.23148399591445923,
+                    "right": 0.8035355806350708
                 },
                 "teams": [
                     {
-                        "maxPlayers": 81391311
+                        "maxPlayers": 5849422
                     },
                     {
-                        "maxPlayers": 85315747
-                    }
-                ]
-            },
-            {
-                "maxTeams": 21366853,
-                "startBox": {
-                    "top": 0.9255445599555969,
-                    "bottom": 0.7585924863815308,
-                    "left": 0.18390631675720215,
-                    "right": 0.7069403529167175
-                },
-                "teams": [
+                        "maxPlayers": 83166093
+                    },
                     {
-                        "maxPlayers": 13284898
-                    }
-                ]
-            },
-            {
-                "maxTeams": 92354984,
-                "startBox": {
-                    "top": 0.6213186383247375,
-                    "bottom": 0.7227727770805359,
-                    "left": 0.7365755438804626,
-                    "right": 0.1030048131942749
-                },
-                "teams": [
-                    {
-                        "maxPlayers": 18122399
+                        "maxPlayers": 98946715
                     }
                 ]
             }
@@ -2847,6 +2906,22 @@ export interface LobbyUpdateRequest {
 }
 export interface LobbyUpdateRequestData {
     name?: string;
+    description?: string;
+    tags?:
+        | []
+        | ["duel" | "small team" | "large team" | "PvE"]
+        | ["duel" | "small team" | "large team" | "PvE", "duel" | "small team" | "large team" | "PvE"]
+        | [
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE"
+          ]
+        | [
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE"
+          ];
     mapName?: string;
     allyTeamConfig?: AllyTeamConfig;
 }
@@ -3302,6 +3377,34 @@ Sent by the server whenever something in the lobby changes. Uses json patch (RFC
             "properties": {
                 "id": { "type": "string" },
                 "name": { "type": "string" },
+                "description": {
+                    "anyOf": [
+                        {
+                            "description": "Lobby description, rules, or requirements",
+                            "type": "string",
+                            "maxLength": 500
+                        },
+                        { "type": "null" }
+                    ]
+                },
+                "tags": {
+                    "anyOf": [
+                        {
+                            "description": "Lobby tags for filtering",
+                            "type": "array",
+                            "items": {
+                                "enum": [
+                                    "duel",
+                                    "small team",
+                                    "large team",
+                                    "PvE"
+                                ]
+                            },
+                            "maxItems": 4
+                        },
+                        { "type": "null" }
+                    ]
+                },
                 "mapName": { "type": "string" },
                 "engineVersion": { "type": "string" },
                 "gameVersion": { "type": "string" },
@@ -3546,70 +3649,39 @@ Sent by the server whenever something in the lobby changes. Uses json patch (RFC
     "messageId": "laboris ipsum ea ut sit",
     "commandId": "lobby/updated",
     "data": {
-        "id": "non",
-        "name": "aliquip culpa cillum mollit",
-        "mapName": "eiusmod",
-        "engineVersion": "in",
-        "gameVersion": "ullamco sint reprehenderit dolor amet",
-        "allyTeamConfig": {
-            "q(": null,
-            "": null
-        },
-        "players": {
-            "|-$!Sr>/": null
-        },
-        "spectators": {
-            "}68%d5": {
-                "id": "351",
-                "joinQueuePosition": -81725800.03738403
-            },
-            "f_XxC$3": {
-                "id": "351",
-                "joinQueuePosition": 72971963.88244629
-            },
-            "0UfeO:bH)": {
-                "id": "351",
-                "joinQueuePosition": null
-            }
-        },
+        "id": "aliqua anim veniam nisi nostrud",
+        "name": "fugiat esse",
+        "tags": null,
+        "mapName": "consequat veniam velit sed irure",
         "bots": {
-            "jF[A|;Jh(": {
-                "id": "Ut",
+            "&JX9": null,
+            ":\\97D ": {
+                "id": "aute est enim nostrud eu",
                 "hostUserId": "351",
-                "allyTeam": "veniam sint qui",
-                "team": "irure magna consectetur",
-                "player": "ea in nulla",
-                "name": null,
-                "shortName": "occaecat quis irure Lorem Duis",
-                "version": null,
-                "options": null
-            },
-            "/}3kum,Mh!": {
-                "id": "aute Duis commodo",
-                "hostUserId": "351",
-                "allyTeam": "laborum reprehenderit veniam nisi aute",
-                "team": "est nulla",
-                "player": "et",
-                "name": null,
-                "shortName": "commodo et incididunt",
-                "version": null,
+                "allyTeam": "id ut proident quis aute",
+                "team": "anim occaecat id magna",
+                "name": "sunt",
+                "shortName": "enim",
+                "version": "nulla laborum commodo anim in",
                 "options": {
-                    "N}E#D": "tempor",
-                    "h+*": "labore"
+                    "": "dolore deserunt proident ut amet",
+                    "=": null,
+                    "K8jGc": null
                 }
             },
-            "n": {
-                "id": "qui ad commodo voluptate aute",
-                "hostUserId": "351",
-                "player": "tempor",
-                "version": null,
+            "G4|<l*3KDc": null,
+            "": {
+                "id": "consectetur",
+                "version": "in",
                 "options": {
-                    "}c3": null
+                    "_)": null,
+                    "H*40": null,
+                    "P": null
                 }
             }
         },
         "currentBattle": {
-            "id": "laborum ullamco",
+            "id": "veniam",
             "startedAt": 1705432698000000
         }
     }
@@ -3639,6 +3711,23 @@ export interface LobbyUpdatedEvent {
 export interface LobbyUpdatedEventData {
     id: string;
     name?: string;
+    description?: string | null;
+    tags?:
+        | []
+        | ["duel" | "small team" | "large team" | "PvE"]
+        | ["duel" | "small team" | "large team" | "PvE", "duel" | "small team" | "large team" | "PvE"]
+        | [
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE"
+          ]
+        | [
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE"
+          ]
+        | null;
     mapName?: string;
     engineVersion?: string;
     gameVersion?: string;

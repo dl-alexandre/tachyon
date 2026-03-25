@@ -6,6 +6,21 @@ export const lobbyOverview = Type.Object(
     {
         id: Type.String(),
         name: Type.String(),
+        description: Type.Optional(
+            Type.String({
+                maxLength: 500,
+                description: "Optional description of the lobby, rules, or requirements",
+            })
+        ),
+        tags: Type.Optional(
+            Type.Array(
+                Type.Enum(["duel", "small team", "large team", "PvE"]),
+                {
+                    maxItems: 4,
+                    description: "Lobby tags for filtering",
+                }
+            )
+        ),
         playerCount: Type.Integer(),
         maxPlayerCount: Type.Integer(),
         mapName: Type.String(),

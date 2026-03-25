@@ -26,6 +26,20 @@
                                     "properties": {
                                         "id": { "type": "string" },
                                         "name": { "type": "string" },
+                                        "description": { "type": "string" },
+                                        "tags": {
+                                            "description": "Tags for filtering",
+                                            "type": "array",
+                                            "items": {
+                                                "enum": [
+                                                    "duel",
+                                                    "small team",
+                                                    "large team",
+                                                    "PvE"
+                                                ]
+                                            },
+                                            "maxItems": 4
+                                        },
                                         "playerCount": { "type": "integer" },
                                         "maxPlayerCount": { "type": "integer" },
                                         "mapName": { "type": "string" },
