@@ -17,6 +17,19 @@
             "type": "object",
             "properties": {
                 "name": { "type": "string" },
+                "description": {
+                    "description": "Optional description of the lobby, rules, or requirements",
+                    "type": "string",
+                    "maxLength": 500
+                },
+                "tags": {
+                    "description": "Lobby tags for filtering (duel, small team, large team, PvE)",
+                    "type": "array",
+                    "items": {
+                        "enum": ["duel", "small team", "large team", "PvE"]
+                    },
+                    "maxItems": 4
+                },
                 "mapName": { "type": "string" },
                 "allyTeamConfig": {
                     "$ref": "../../definitions/allyTeamConfig.json"

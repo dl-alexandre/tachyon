@@ -339,6 +339,19 @@
             "properties": {
                 "id": { "type": "string" },
                 "name": { "type": "string" },
+                "description": {
+                    "description": "Optional description of the lobby, rules, or requirements",
+                    "type": "string",
+                    "maxLength": 500
+                },
+                "tags": {
+                    "description": "Lobby tags for filtering",
+                    "type": "array",
+                    "items": {
+                        "enum": ["duel", "small team", "large team", "PvE"]
+                    },
+                    "maxItems": 4
+                },
                 "playerCount": { "type": "integer" },
                 "maxPlayerCount": { "type": "integer" },
                 "mapName": { "type": "string" },
@@ -3489,6 +3502,24 @@
                     "type": "object",
                     "properties": {
                         "name": { "type": "string" },
+                        "description": {
+                            "description": "Optional description of the lobby, rules, or requirements",
+                            "type": "string",
+                            "maxLength": 500
+                        },
+                        "tags": {
+                            "description": "Lobby tags for filtering (duel, small team, large team, PvE)",
+                            "type": "array",
+                            "items": {
+                                "enum": [
+                                    "duel",
+                                    "small team",
+                                    "large team",
+                                    "PvE"
+                                ]
+                            },
+                            "maxItems": 4
+                        },
                         "mapName": { "type": "string" },
                         "allyTeamConfig": {
                             "$ref": "#/definitions/allyTeamConfig"
@@ -3975,6 +4006,22 @@
                                             "properties": {
                                                 "id": { "type": "string" },
                                                 "name": { "type": "string" },
+                                                "description": {
+                                                    "type": "string"
+                                                },
+                                                "tags": {
+                                                    "description": "Tags for filtering",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "enum": [
+                                                            "duel",
+                                                            "small team",
+                                                            "large team",
+                                                            "PvE"
+                                                        ]
+                                                    },
+                                                    "maxItems": 4
+                                                },
                                                 "playerCount": {
                                                     "type": "integer"
                                                 },
@@ -4357,6 +4404,24 @@
                             "description": "to rename the lobby",
                             "type": "string"
                         },
+                        "description": {
+                            "description": "update the lobby description",
+                            "type": "string",
+                            "maxLength": 500
+                        },
+                        "tags": {
+                            "description": "Replace existing tags with new set",
+                            "type": "array",
+                            "items": {
+                                "enum": [
+                                    "duel",
+                                    "small team",
+                                    "large team",
+                                    "PvE"
+                                ]
+                            },
+                            "maxItems": 4
+                        },
                         "mapName": { "type": "string" },
                         "allyTeamConfig": {
                             "$ref": "#/definitions/allyTeamConfig"
@@ -4600,6 +4665,34 @@
                     "properties": {
                         "id": { "type": "string" },
                         "name": { "type": "string" },
+                        "description": {
+                            "anyOf": [
+                                {
+                                    "description": "Lobby description, rules, or requirements",
+                                    "type": "string",
+                                    "maxLength": 500
+                                },
+                                { "type": "null" }
+                            ]
+                        },
+                        "tags": {
+                            "anyOf": [
+                                {
+                                    "description": "Lobby tags for filtering",
+                                    "type": "array",
+                                    "items": {
+                                        "enum": [
+                                            "duel",
+                                            "small team",
+                                            "large team",
+                                            "PvE"
+                                        ]
+                                    },
+                                    "maxItems": 4
+                                },
+                                { "type": "null" }
+                            ]
+                        },
                         "mapName": { "type": "string" },
                         "engineVersion": { "type": "string" },
                         "gameVersion": { "type": "string" },

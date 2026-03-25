@@ -1,18 +1,18 @@
 Clans are a permanent kind of [party](https://github.com/beyond-all-reason/tachyon/blob/master/docs/schema/party.md) with additional features.
 
-A clan has a profil which includes several information like tag, name, description.
+A clan has a **profile** which includes information like tag, name, and description.
 
 ### Manage clan
 
-Every user is allowed to create a clan with [clan/create](#create). Then he is the clan leader. The clan leader is the only one who is allowed to delete the clan with the request [clan/delete](#delete).
+Every user is allowed to create a clan with [clan/create](#create). Upon creation, they become the clan leader. The clan leader is the only one who is allowed to delete the clan with the request [clan/delete](#delete).
 
 Clan leader and clan co-leaders are able to update the profile [clan/update](#update).
 
-Clan leader and clan co-leaders are allowed to invite different players with [clan/invite](#invite). (There are no limitations of the count of members.) The invitation can be cancelled by [clan/cancelInvite](#cancelinvite). Invited players can accept invitiation by [aclan/cceptInvite](#acceptinvite) and decline by [clan/declineInvite](#declineinvite).
+Clan leader and clan co-leaders are allowed to invite different players with [clan/invite](#invite). (There are no limitations of the count of members.) The invitation can be cancelled by [clan/cancelInvite](#cancelinvite). Invited players can accept invitations by [clan/acceptInvite](#acceptinvite) and decline by [clan/declineInvite](#declineinvite).
 
-Only the clan-leader is able to kick members by [clan/kickMember](#kickmember). Similarly, any member can leave the clan they are currently in with [clan/leave](#leave).
+Both the clan leader and co-leaders are able to kick members by [clan/kickMember](#kickmember). **Note:** A user cannot kick themselves; attempting to do so will result in an `invalid_request` error. Similarly, any member can leave the clan they are currently in with [clan/leave](#leave).
 
-The clan leader is allowed to appoint members as clan co-leader with [clan/setRole](#setrole). The clan leader has also the possibility to transfer his leadership role to a different member with the same command. (ATTENTION: By executing this command the clan leader loses his permissions!)
+The clan leader is allowed to appoint members as clan co-leader with [clan/setRole](#setrole). The [clan/setRole](#setrole) command is also used to demote a co-leader back to member. The clan leader has also the possibility to transfer his leadership role to a different member with the same command. (ATTENTION: By executing this command the clan leader loses his permissions and becomes a co-leader!)
 
 ### Special use cases
 
