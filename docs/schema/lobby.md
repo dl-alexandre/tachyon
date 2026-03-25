@@ -1882,13 +1882,18 @@ Sent by the server to give the client the full list of all lobbies
     "data": {
         "lobbies": {
             "JH+": {
-                "id": "nulla eiusmod",
-                "name": "ad ullamco sunt ipsum proident",
-                "playerCount": 26791585,
-                "maxPlayerCount": -87375796,
-                "mapName": "amet proident non elit",
-                "engineVersion": "in nostrud",
-                "gameVersion": "ullamco esse cillum enim",
+                "id": "ad dolore sit sint tempor",
+                "name": "aute esse pariatur fugiat",
+                "description": "nostrud proident minim adipisicing",
+                "tags": [
+                    "PvE",
+                    "duel"
+                ],
+                "playerCount": 86861897,
+                "maxPlayerCount": 94461,
+                "mapName": "laborum aliqua ad non",
+                "engineVersion": "aute",
+                "gameVersion": "deserunt do",
                 "currentBattle": null
             }
         }
@@ -1915,6 +1920,22 @@ export interface LobbyListResetEventData {
 export interface LobbyOverview {
     id: string;
     name: string;
+    description?: string;
+    tags?:
+        | []
+        | ["duel" | "small team" | "large team" | "PvE"]
+        | ["duel" | "small team" | "large team" | "PvE", "duel" | "small team" | "large team" | "PvE"]
+        | [
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE"
+          ]
+        | [
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE",
+              "duel" | "small team" | "large team" | "PvE"
+          ];
     playerCount: number;
     maxPlayerCount: number;
     mapName: string;
