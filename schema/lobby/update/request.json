@@ -20,6 +20,12 @@
                     "description": "to rename the lobby",
                     "type": "string"
                 },
+                "description": {
+                    "anyOf": [
+                        { "type": "string", "maxLength": 500 },
+                        { "type": "null" }
+                    ]
+                },
                 "mapName": { "type": "string" },
                 "allyTeamConfig": {
                     "$ref": "../../definitions/allyTeamConfig.json"

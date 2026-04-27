@@ -154,6 +154,7 @@
             "properties": {
                 "id": { "type": "string" },
                 "name": { "type": "string" },
+                "description": { "type": "string", "maxLength": 500 },
                 "mapName": { "type": "string" },
                 "engineVersion": { "type": "string" },
                 "gameVersion": { "type": "string" },
@@ -378,6 +379,7 @@
             "properties": {
                 "id": { "type": "string" },
                 "name": { "type": "string" },
+                "description": { "type": "string", "maxLength": 500 },
                 "playerCount": { "type": "integer" },
                 "maxPlayerCount": { "type": "integer" },
                 "mapName": { "type": "string" },
@@ -3609,6 +3611,7 @@
                     "type": "object",
                     "properties": {
                         "name": { "type": "string" },
+                        "description": { "type": "string", "maxLength": 500 },
                         "mapName": { "type": "string" },
                         "allyTeamConfig": {
                             "$ref": "#/definitions/allyTeamConfig"
@@ -4117,6 +4120,15 @@
                                             "properties": {
                                                 "id": { "type": "string" },
                                                 "name": { "type": "string" },
+                                                "description": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "string",
+                                                            "maxLength": 500
+                                                        },
+                                                        { "type": "null" }
+                                                    ]
+                                                },
                                                 "playerCount": {
                                                     "type": "integer"
                                                 },
@@ -4589,6 +4601,12 @@
                             "description": "to rename the lobby",
                             "type": "string"
                         },
+                        "description": {
+                            "anyOf": [
+                                { "type": "string", "maxLength": 500 },
+                                { "type": "null" }
+                            ]
+                        },
                         "mapName": { "type": "string" },
                         "allyTeamConfig": {
                             "$ref": "#/definitions/allyTeamConfig"
@@ -4862,6 +4880,12 @@
                     "properties": {
                         "id": { "type": "string" },
                         "name": { "type": "string" },
+                        "description": {
+                            "anyOf": [
+                                { "type": "string", "maxLength": 500 },
+                                { "type": "null" }
+                            ]
+                        },
                         "mapName": { "type": "string" },
                         "engineVersion": { "type": "string" },
                         "gameVersion": { "type": "string" },

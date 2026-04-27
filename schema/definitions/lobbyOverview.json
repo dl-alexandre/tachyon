@@ -6,6 +6,7 @@
     "properties": {
         "id": { "type": "string" },
         "name": { "type": "string" },
+        "description": { "type": "string", "maxLength": 500 },
         "playerCount": { "type": "integer" },
         "maxPlayerCount": { "type": "integer" },
         "mapName": { "type": "string" },

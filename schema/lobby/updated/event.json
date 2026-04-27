@@ -18,6 +18,12 @@
             "properties": {
                 "id": { "type": "string" },
                 "name": { "type": "string" },
+                "description": {
+                    "anyOf": [
+                        { "type": "string", "maxLength": 500 },
+                        { "type": "null" }
+                    ]
+                },
                 "mapName": { "type": "string" },
                 "engineVersion": { "type": "string" },
                 "gameVersion": { "type": "string" },

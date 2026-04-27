@@ -6,6 +6,7 @@ export const lobbyOverview = Type.Object(
     {
         id: Type.String(),
         name: Type.String(),
+        description: Type.Optional(Type.String({ maxLength: 500 })),
         playerCount: Type.Integer(),
         maxPlayerCount: Type.Integer(),
         mapName: Type.String(),

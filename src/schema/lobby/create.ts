@@ -9,6 +9,7 @@ export default defineEndpoint({
     request: {
         data: Type.Object({
             name: Type.String(),
+            description: Type.Optional(Type.String({ maxLength: 500 })),
             mapName: Type.String(),
             allyTeamConfig: Type.Ref("allyTeamConfig"),
             areBossesEnabled: Type.Optional(Type.Boolean({ default: true })),
