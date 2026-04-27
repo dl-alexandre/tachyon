@@ -4,6 +4,7 @@ export const lobbyDetails = Type.Object(
     {
         id: Type.String(),
         name: Type.String(),
+        description: Type.Optional(Type.String({ maxLength: 500 })),
         mapName: Type.String(),
         engineVersion: Type.String(),
         gameVersion: Type.String(),
